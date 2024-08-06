@@ -1,0 +1,38 @@
+Algoritimo "salvandoComida"
+var
+  comidaQueimando,caminhoMaisDemorado, encontrarObstaculo, girarParaDireita:BOOL
+  resultado: String = ""
+Inicio
+Se comidaQueimando então
+    Se caminhoMaisDemorado então
+      andar
+      girar90GrausParaDireita
+      girar90GrausParaEsquerda
+      Se girarParaDireita então
+        girar90GrausParaDireita
+        girar90GrausParaDireita
+      Senão
+        girar90GrausParaEsquerda
+        girar90GrausParaEsquerda
+      Fim Se
+      Enquanto encontrarObstaculo for falso
+        andar
+      Fim Enquanto
+      Escreva('chegou na comida pelo caminho mais demorado, desligue o fogo')
+    Senão
+     Se girarParaDireita então
+        girar90GrausParaDireita
+        girar90GrausParaDireita
+      Senão
+        girar90GrausParaEsquerda
+        girar90GrausParaEsquerda
+      Fim Se
+      Enquanto encontrarObstaculo for falso
+        andar
+      Fim Enquanto
+      Escreva('chegou na comida pelo caminho mais rapido, desligue o fogo')
+    Fim Se
+Senão
+  espere
+Fim Se
+
