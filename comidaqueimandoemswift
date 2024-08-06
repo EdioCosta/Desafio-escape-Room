@@ -1,0 +1,58 @@
+class ComidaDoForno{
+    private var comidaQueimando:Bool
+    private var caminhoMaisDemorado:Bool
+    private var encontrarObstaculo:Bool
+    private var girarParaDireita:Bool
+    private var resultado: String = ""
+    init(comidaQueimando:Bool, caminhoMaisDemorado:Bool, encontrarObstaculo:Bool, girarParaDireita:Bool){
+        self.comidaQueimando = comidaQueimando
+        self.caminhoMaisDemorado = caminhoMaisDemorado
+        self.encontrarObstaculo = encontrarObstaculo
+        self.girarParaDireita = girarParaDireita
+    }
+    func andar(){}
+    func girar90graus(sentido:Sentido){}
+    func rota() -> String {
+        if comidaQueimando {
+            if caminhoMaisDemorado {
+                andar()
+                girar90graus(sentido: .direita)
+                girar90graus(sentido: .esquerda)
+                if girarParaDireita{
+                    girar90graus(sentido: .direita)
+                    girar90graus(sentido: .direita)
+                } else {
+                    girar90graus(sentido: .esquerda)
+                    girar90graus(sentido: .esquerda)
+                }
+                while !encontrarObstaculo {
+                    andar()
+                }
+                resultado = "chegou na comida pelo caminho mais demorado, desligue o fogo"
+            } else {
+                if girarParaDireita{
+                    girar90graus(sentido: .direita)
+                    girar90graus(sentido: .direita)
+                } else {
+                    girar90graus(sentido: .esquerda)
+                    girar90graus(sentido: .esquerda)
+                }
+                while !encontrarObstaculo {
+                    andar()
+                }
+                resultado = "chegou na comida pelo caminho mais rapido, desligue o fogo"
+            }
+        } else{
+            resultado = "Espere"
+        }
+        return resultado
+    }
+    
+}
+enum Sentido{
+    case direita
+    case esquerda
+}
+
+var comidaDoForno = ComidaDoForno(comidaQueimando: true, caminhoMaisDemorado: true, encontrarObstaculo: true, girarParaDireita: true)
+comidaDoForno.rota()
